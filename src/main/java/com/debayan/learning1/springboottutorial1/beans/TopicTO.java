@@ -9,29 +9,26 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Entity
-@Table(name= "TIPIC_")
-public class Topic {
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.PROPERTY)
+public class TopicTO {
 	
-	@Id
-	@Column(name="topicId")
 	private String topicId;
 	private String name;
 	private String description;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "topic", cascade = { CascadeType.ALL })
-	@JsonIgnore
-	List<Course> courses;
+	List<CourseTO> courses;
 	
-	public Topic() {
+	public TopicTO() {
 		super();
 	}
 	
 	
-	public Topic(String topicId, String name, String description) {
+	public TopicTO(String topicId, String name, String description) {
 		super();
 		this.topicId = topicId;
 		this.name = name;
@@ -57,12 +54,12 @@ public class Topic {
 	}
 
 
-	public List<Course> getCourses() {
+	public List<CourseTO> getCourses() {
 		return courses;
 	}
 
 
-	public void setCourses(List<Course> courses) {
+	public void setCourses(List<CourseTO> courses) {
 		this.courses = courses;
 	}
 	

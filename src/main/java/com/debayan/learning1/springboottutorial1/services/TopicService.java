@@ -38,7 +38,9 @@ public class TopicService {
 
 	public Topic getTopic(String id) {
 		//return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
-		return topicRepository.findById(id).get();
+		Topic tt= topicRepository.findById(id).get();
+		tt.getCourses();
+		return tt;
 	}
 	
 	public List<Topic> addTopic(Topic t){
